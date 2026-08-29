@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debreceni Árfigyelő - GVH Adatok</title>
+    <title>Debreceni Árfigyelő - GVH Terméklap Hivatkozásokkal</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -90,6 +90,25 @@
             font-size: 0.9rem;
         }
 
+        /* Hivatkozás stílusa a terméknévnél */
+        .product-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .product-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .gvh-icon {
+            font-size: 0.75rem;
+            color: var(--primary);
+            margin-left: 4px;
+        }
+
         input[type="number"] {
             width: 60px;
             padding: 6px;
@@ -115,7 +134,25 @@
             border: 2px solid var(--accent-green);
         }
 
+        .store-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
         .store-name { font-weight: 600; font-size: 0.9rem; }
+        
+        .store-link {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .store-link:hover {
+            text-decoration: underline;
+        }
+
         .store-price { font-weight: 700; font-size: 1.05rem; }
         .winner .store-price { color: var(--accent-green); }
 
@@ -133,18 +170,18 @@
 <body>
 
     <div class="header">
-        <h1>🛒 Debreceni GVH Árfigyelő</h1>
+        <h1>🛒 Debreceni Árfigyelő</h1>
         <div class="last-update" id="last-update">Adatok frissítése...</div>
     </div>
 
     <div class="grid-container">
         <div class="card">
-            <h2>1. Termékek kiválasztása (GVH Megnevezés)</h2>
+            <h2>1. Termékek (Kattints a GVH laphoz)</h2>
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>Pontos Terméknév</th>
+                            <th>Terméknév</th>
                             <th style="text-align: center;">Mennyiség</th>
                         </tr>
                     </thead>
@@ -154,7 +191,7 @@
         </div>
 
         <div class="card">
-            <h2>2. Teljes fizetendő kosárérték</h2>
+            <h2>2. Összesített árak</h2>
             <div id="results-container"></div>
         </div>
     </div>
@@ -163,11 +200,20 @@
         let db = null;
         let cart = {};
 
+        const storeWebsites = {
+            "Auchan (Debrecen, Kishatár u.)": "https://www.auchan.hu/",
+            "Lidl (Debrecen, Derék u.)": "https://www.lidl.hu/",
+            "ALDI (Debrecen, Ötvenhatosok tere)": "https://www.aldi.hu/",
+            "Penny (Debrecen, István út)": "https://www.penny.hu/",
+            "Tesco (Debrecen, Kishegyesi út)": "https://tesco.hu/",
+            "Spar (Debrecen, Plaza)": "https://www.spar.hu/"
+        };
+
         async function loadPrices() {
             try {
                 const response = await fetch('./prices.json');
                 db = await response.json();
-                document.getElementById('last-update').innerText = `Utolsó GVH frissítés: ${db.last_updated}`;
+                document.getElementById('last-update').innerText = `Utolsó frissítés: ${db.last_updated}`;
                 renderProducts();
                 calculateTotals();
             } catch (e) {
@@ -183,7 +229,11 @@
                 cart[p.id] = 0;
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td><b>${p.name}</b></td>
+                    <td>
+                        <a href="${p.gvh_url || 'https://arfigyelo.gvh.hu/'}" target="_blank" rel="noopener" class="product-link">
+                            ${p.name} <span class="gvh-icon">↗</span>
+                        </a>
+                    </td>
                     <td style="text-align: center;">
                         <input type="number" min="0" value="0" onchange="updateCart('${p.id}', this.value)">
                     </td>
@@ -218,12 +268,16 @@
 
             totals.forEach((item, index) => {
                 const isWinner = index === 0 && item.total > 0;
+                const storeUrl = storeWebsites[item.name] || "https://arfigyelo.gvh.hu/";
                 const div = document.createElement('div');
                 div.className = `store-card ${isWinner ? 'winner' : ''}`;
                 div.innerHTML = `
-                    <div>
-                        <span class="store-name">${item.name}</span>
-                        ${isWinner ? '<span class="badge">LEGOLCSÓBB</span>' : ''}
+                    <div class="store-info">
+                        <div>
+                            <span class="store-name">${item.name}</span>
+                            ${isWinner ? '<span class="badge">LEGOLCSÓBB</span>' : ''}
+                        </div>
+                        <a href="${storeUrl}" target="_blank" rel="noopener" class="store-link">Saját weboldal ↗</a>
                     </div>
                     <span class="store-price">${item.total.toLocaleString()} Ft</span>
                 `;
