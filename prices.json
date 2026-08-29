@@ -1,45 +1,55 @@
 {
-    "last_updated": "2026-08-29 17:06:49 (GVH Árfigyelő forrás)",
+    "last_updated": "2026-08-29 18:08:00 (GVH forrás)",
     "products": [
         {
             "id": "milk_28",
-            "name": "Mizo UHT Tej 2,8% (1L)"
+            "name": "Mizo UHT Tej 2,8% (1L)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/1.5-es-2.8-es-esls-uht-tej"
         },
         {
             "id": "trappista",
-            "name": "Kőrösi Trappista sajt egyszálas / tömb (1kg)"
+            "name": "Kőrösi Trappista sajt egyszálas / tömb (1kg)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/trappista-tombos-sajt"
         },
         {
             "id": "chicken_breast",
-            "name": "Friss csirkemellfilé tálcás (1kg)"
+            "name": "Friss csirkemellfilé tálcás (1kg)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/csirkemellfile-friss-hűtött"
         },
         {
             "id": "eggs_m",
-            "name": "Friss Tojás 'M' méret (10 db/doboz)"
+            "name": "Friss Tojás 'M' méret (10 db/doboz)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/friss-tojas-m-meret"
         },
         {
             "id": "rice_a",
-            "name": "Kunsági 'A' minőségű Rizs (1kg)"
+            "name": "Kunsági 'A' minőségű Rizs (1kg)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/a-minosegu-rizs"
         },
         {
             "id": "pasta_spaghetti",
-            "name": "Gyermelyi 4 tojásos Spagetti tészta (500g)"
+            "name": "Gyermelyi 4 tojásos Spagetti tészta (500g)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/spagetti-teszta"
         },
         {
             "id": "bread_white",
-            "name": "Szeletelt Fehér kenyér (1kg)"
+            "name": "Szeletelt Fehér kenyér (1kg)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/feher-kenyér"
         },
         {
             "id": "sunflower_oil",
-            "name": "Vénusz Finomított Napraforgó-étolaj (1L)"
+            "name": "Vénusz Finomított Napraforgó-étolaj (1L)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/napraforgo-etolaj"
         },
         {
             "id": "sour_cream",
-            "name": "Mizo Tejföl 20% (330g)"
+            "name": "Mizo Tejföl 20% (330g)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/tejfol-20-os"
         },
         {
             "id": "tp_3ply",
-            "name": "Zewa Deluxe 3 rétegű toalettpapír (10 tekercs)"
+            "name": "Zewa Deluxe 3 rétegű toalettpapír (10 tekercs)",
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/toalettpapir-3-retegu"
         }
     ],
     "stores": {
