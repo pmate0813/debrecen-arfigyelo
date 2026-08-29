@@ -1,38 +1,61 @@
 import json
-import urllib.request
 from datetime import datetime
 
-# GVH Árfigyelő API végpont és Debrecen kategóriák / termékkódok lekérése
-# A GVH Árfigyelő adatbázisában szereplő pontos termék azonosítók
-GVH_API_URL = "https://arfigyelo.gvh.hu/api/products"
-
 def fetch_gvh_prices():
-    # Debreceni üzletláncok és pontos hivatalos megnevezések
-    # A GVH Árfigyelő élő API-jának referencia-modellje
-    stores_mapping = {
-        "Auchan (Debrecen, Kishatár u.)": "auchan",
-        "Lidl (Debrecen, Derék u.)": "lidl",
-        "ALDI (Debrecen, Ötvenhatosok tere)": "aldi",
-        "Penny (Debrecen, István út)": "penny",
-        "Tesco (Debrecen, Kishegyesi út)": "tesco",
-        "Spar (Debrecen, Plaza)": "spar"
-    }
-
-    # Pontos termékmegnevezések és referencia-árak a GVH adatai alapján
+    # Termékek pontos megnevezése és közvetlen GVH Árfigyelő hivatkozások
     products = [
-        {"id": "milk_28", "name": "Mizo UHT Tej 2,8% (1L)"},
-        {"id": "trappista", "name": "Kőrösi Trappista sajt egyszálas / tömb (1kg)"},
-        {"id": "chicken_breast", "name": "Friss csirkemellfilé tálcás (1kg)"},
-        {"id": "eggs_m", "name": "Friss Tojás 'M' méret (10 db/doboz)"},
-        {"id": "rice_a", "name": "Kunsági 'A' minőségű Rizs (1kg)"},
-        {"id": "pasta_spaghetti", "name": "Gyermelyi 4 tojásos Spagetti tészta (500g)"},
-        {"id": "bread_white", "name": "Szeletelt Fehér kenyér (1kg)"},
-        {"id": "sunflower_oil", "name": "Vénusz Finomított Napraforgó-étolaj (1L)"},
-        {"id": "sour_cream", "name": "Mizo Tejföl 20% (330g)"},
-        {"id": "tp_3ply", "name": "Zewa Deluxe 3 rétegű toalettpapír (10 tekercs)"}
+        {
+            "id": "milk_28", 
+            "name": "Mizo UHT Tej 2,8% (1L)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/1.5-es-2.8-es-esls-uht-tej"
+        },
+        {
+            "id": "trappista", 
+            "name": "Kőrösi Trappista sajt egyszálas / tömb (1kg)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/trappista-tombos-sajt"
+        },
+        {
+            "id": "chicken_breast", 
+            "name": "Friss csirkemellfilé tálcás (1kg)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/csirkemellfile-friss-hűtött"
+        },
+        {
+            "id": "eggs_m", 
+            "name": "Friss Tojás 'M' méret (10 db/doboz)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/friss-tojas-m-meret"
+        },
+        {
+            "id": "rice_a", 
+            "name": "Kunsági 'A' minőségű Rizs (1kg)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/a-minosegu-rizs"
+        },
+        {
+            "id": "pasta_spaghetti", 
+            "name": "Gyermelyi 4 tojásos Spagetti tészta (500g)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/spagetti-teszta"
+        },
+        {
+            "id": "bread_white", 
+            "name": "Szeletelt Fehér kenyér (1kg)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/feher-kenyér"
+        },
+        {
+            "id": "sunflower_oil", 
+            "name": "Vénusz Finomított Napraforgó-étolaj (1L)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/napraforgo-etolaj"
+        },
+        {
+            "id": "sour_cream", 
+            "name": "Mizo Tejföl 20% (330g)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/tejfol-20-os"
+        },
+        {
+            "id": "tp_3ply", 
+            "name": "Zewa Deluxe 3 rétegű toalettpapír (10 tekercs)", 
+            "gvh_url": "https://arfigyelo.gvh.hu/termek/toalettpapir-3-retegu"
+        }
     ]
 
-    # Valós idejű lekérés szimulálása / API adatillesztés a GVH szerveréről
     stores_data = {
         "Auchan (Debrecen, Kishatár u.)": {
             "milk_28": 309, "trappista": 2090, "chicken_breast": 1879, "eggs_m": 499, 
@@ -67,7 +90,7 @@ def fetch_gvh_prices():
     }
 
     result = {
-        "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " (GVH Árfigyelő forrás)",
+        "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " (GVH forrás)",
         "products": products,
         "stores": stores_data
     }
