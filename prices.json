@@ -1,0 +1,119 @@
+{
+    "last_updated": "2026-08-29 16:30:33",
+    "products": [
+        {
+            "id": "milk",
+            "name": "Tej 2.8% (1L)"
+        },
+        {
+            "id": "cheese",
+            "name": "Trappista sajt (1kg)"
+        },
+        {
+            "id": "chicken",
+            "name": "Csirkemellfilé (1kg)"
+        },
+        {
+            "id": "eggs",
+            "name": "Tojás (10 db, M-es)"
+        },
+        {
+            "id": "rice",
+            "name": "Rizs (1kg)"
+        },
+        {
+            "id": "pasta",
+            "name": "Spagetti tészta (500g)"
+        },
+        {
+            "id": "bread",
+            "name": "Fehér kenyér (1kg)"
+        },
+        {
+            "id": "tp",
+            "name": "Toalettpapír (3 rétegű, 10 tek)"
+        },
+        {
+            "id": "detergent",
+            "name": "Mosógél (kb. 30 mosás)"
+        },
+        {
+            "id": "dishsoap",
+            "name": "Mosogatószer (1L)"
+        }
+    ],
+    "stores": {
+        "Auchan (Debrecen, Kishatár u.)": {
+            "milk": 309,
+            "cheese": 2090,
+            "chicken": 1879,
+            "eggs": 499,
+            "rice": 429,
+            "pasta": 339,
+            "bread": 499,
+            "tp": 1029,
+            "detergent": 2190,
+            "dishsoap": 619
+        },
+        "Lidl (Debrecen, Derék u. / Hadházi út)": {
+            "milk": 315,
+            "cheese": 2190,
+            "chicken": 1899,
+            "eggs": 529,
+            "rice": 449,
+            "pasta": 355,
+            "bread": 529,
+            "tp": 1099,
+            "detergent": 2399,
+            "dishsoap": 649
+        },
+        "ALDI (Debrecen, Ötvenhatosok tere)": {
+            "milk": 315,
+            "cheese": 1999,
+            "chicken": 1949,
+            "eggs": 519,
+            "rice": 459,
+            "pasta": 349,
+            "bread": 529,
+            "tp": 1149,
+            "detergent": 2299,
+            "dishsoap": 629
+        },
+        "Penny (Debrecen, István út / Sámsoni út)": {
+            "milk": 295,
+            "cheese": 2150,
+            "chicken": 1890,
+            "eggs": 509,
+            "rice": 439,
+            "pasta": 355,
+            "bread": 489,
+            "tp": 1049,
+            "detergent": 2199,
+            "dishsoap": 599
+        },
+        "Tesco (Debrecen, Kishegyesi út)": {
+            "milk": 329,
+            "cheese": 2250,
+            "chicken": 1919,
+            "eggs": 539,
+            "rice": 469,
+            "pasta": 369,
+            "bread": 549,
+            "tp": 1199,
+            "detergent": 2490,
+            "dishsoap": 679
+        },
+        "Spar (Debrecen, Plaza / Malompark)": {
+            "milk": 349,
+            "cheese": 2490,
+            "chicken": 1999,
+            "eggs": 559,
+            "rice": 499,
+            "pasta": 399,
+            "bread": 599,
+            "tp": 1299,
+            "detergent": 2699,
+            "dishsoap": 699
+        }
+    }
+}
